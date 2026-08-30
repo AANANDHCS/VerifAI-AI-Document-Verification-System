@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+verifyai.db
+uploads/*
+node_modules/
+dist/
