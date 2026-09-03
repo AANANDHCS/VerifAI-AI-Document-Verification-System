@@ -508,9 +508,26 @@ def verify(document_id: int, db: Session = Depends(get_db)):
 @app.delete("/documents/{document_id}")
 def delete_document(document_id: int, db: Session = Depends(get_db)):
     item = db.get(Document, document_id)
-    if not item: raise HTTPException(404, "Document not found")
+
+    if not item:
+        raise HTTPException(404, "Document not found")
+
     file_name = item.file_name
-    db.delete(item); db.commit(); log(db, "Record Deletion", f"{file_name} removed from verification history", "WARNING", item, "DELETED", item.risk_level)
+    risk_level = item.risk_level
+
+    db.delete(item)
+    db.commit()
+
+    db.add(AuditLog(
+        action="Record Deletion",
+        detail=f"{file_name} removed from verification history",
+        severity="WARNING",
+        document_name=file_name,
+        status="DELETED",
+        risk_level=risk_level
+    ))
+    db.commit()
+
     return {"deleted": True}
 
 @app.get("/analytics")
