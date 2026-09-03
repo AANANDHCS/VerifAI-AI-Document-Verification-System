@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AlertTriangle, CheckCircle2, ChevronRight, FileCheck2, FileText, RotateCcw, ShieldCheck, UploadCloud, X } from 'lucide-react'
 import './upload-flow.css'
 import './ocr-output.css'
-const API = 'http://localhost:8000'
+const API = 'https://verifai-backend-anand.onrender.com'
 
 const STEPS = ['Uploading document', 'Extracting text using OCR', 'Analyzing document', 'Checking anomalies', 'Generating verification result']
 
