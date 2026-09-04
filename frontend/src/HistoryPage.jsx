@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AlertTriangle, ChevronLeft, ChevronRight, FileCheck2, FileText, Filter, Search, ShieldCheck, Trash2, X } from 'lucide-react'
 import './history-page.css'
 
-const API = 'http://localhost:8000'
+const API = 'https://verifai-backend-anand.onrender.com'
 const money = value => value ? `₹${Number(value).toLocaleString('en-IN')}` : '—'
 const dateLabel = value => value ? new Date(value).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'
 
